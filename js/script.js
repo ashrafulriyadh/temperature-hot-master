@@ -6,11 +6,15 @@ const loadWeather = () => {
 
     searchInput.value = '';
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchText}&appid=f3081e5908fe5ffb346def36ed41a46f&units=metric`;
+    if (searchText == '') {
+        alert('Enter City Name Please!');
+    } else {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchText}&appid=f3081e5908fe5ffb346def36ed41a46f&units=metric`;
 
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayWeather(data))
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayWeather(data))
+    }
 }
 
 const displayWeather = (city) => {
